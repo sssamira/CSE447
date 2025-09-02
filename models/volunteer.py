@@ -1,7 +1,6 @@
 from database import *
 from models.user import User
 from models.crypto_utils import decrypt_field
-from models.crypto_utils import decrypt_field
 
 class Volunteer(db.Model):
     __tablename__ = 'volunteers'

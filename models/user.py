@@ -24,7 +24,6 @@ class User(db.Model):
 
     @staticmethod
     def authenticate(username, password):
-        # Search all users and compare decrypted username
         for user in User.query.all():
             if decrypt_field(user.username) == username:
                 if user.verify_password(password):
@@ -41,7 +40,6 @@ class User(db.Model):
         encrypted_username = encrypt_field(username)
         encrypted_email = encrypt_field(email)
         encrypted_nid = encrypt_field(nid)
-        # Check for existing encrypted username, email, nid
         if User.query.filter_by(username=encrypted_username).first():
             return (False, "Username already registered!")
         if User.query.filter_by(email=encrypted_email).first():
@@ -58,7 +56,6 @@ class User(db.Model):
             return (False, "Invalid date format. Use YYYY-MM-DD")
 
         password = generate_password_hash(password)
-        # Encrypt sensitive fields
         encrypted_name = encrypt_field(name)
         encrypted_address = encrypt_field(address)
         encrypted_contact = encrypt_field(contact)

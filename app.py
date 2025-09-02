@@ -112,7 +112,6 @@ def donateblood():
 
 @app.route('/bloodavailability', methods=['GET', 'POST'])
 def bloodavailability():
-    # public view, do not restrict it with session
     if request.method == 'GET':
         user = User.getAlluser()
         return render_template('bloodavailability.html', user=user)

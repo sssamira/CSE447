@@ -1,23 +1,28 @@
 from database import *
 from models import User, Volunteer
+from models.crypto_utils import encrypt_field, decrypt_field
 
 class ApplyVolunteer(db.Model):
     __tablename__ = 'apply_volunteer'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(100))
+    email = db.Column(db.String(512))
 
 
     def __init__(self, email):
-        self.email = email
+        self.email = encrypt_field(email)
 
     @staticmethod
     def get_all_applicant():
         result = ApplyVolunteer.query.all()
+        # Decrypt email for each applicant
+        for applicant in result:
+            applicant.email = decrypt_field(applicant.email)
         return result
     
 
     def delete_applicant(self, email):
-        ApplyVolunteer.query.filter_by(email=email).delete()
+        encrypted_email = encrypt_field(email)
+        ApplyVolunteer.query.filter_by(email=encrypted_email).delete()
         db.session.commit()
 
     @staticmethod
