@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Blood Availability{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4 mt-4">Blood Availability</h1>
+<div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#filterModal">
+        Filter
+    </button>
+</div>
+
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/bloodavailability" method="POST">
+                    <div class="mb-3">
+                        <label for="bloodgroup" class="form-label">Blood Group</label>
+                        <select class="form-select" id="bloodgroup" name="bloodgroup">
+                            <option selected disabled>Choose...</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card p-5 m-5">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Blood Type</th>
+                    <th>Location</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in user %}
+                <tr>
+                    <td>{{ i.blood_type }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.contact }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

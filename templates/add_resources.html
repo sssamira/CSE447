@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Add Resource{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="text-center">Add Resource</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Camp ID</label>
+                <input type="number" class="form-control" name="campID" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Type</label>
+                <input type="text" class="form-control" name="type" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Quantity</label>
+                <input type="number" class="form-control" name="quantity" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Resource</button>
+        </form>
+    </div>
+{% endblock %}

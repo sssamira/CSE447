@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Add or Update Ongoing Disaster{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="text-center">Add or Update Ongoing Disaster</h1>
+        <form method="post" class="mt-4">
+            <div class="mb-3">
+                <label for="disaster_type" class="form-label">Disaster Type</label>
+                <input type="text" class="form-control" name="disaster_type" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ url_for('volunteer') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

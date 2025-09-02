@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block title %}Make Donation{%endblock%}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="text-center mb-4">Are You Ready to Donate?</h4>
+
+            <form action="/makedonation" method="POST">
+                <div class="mb-3">
+                    <label for="paymentOption" class="form-label">Choose Option</label>
+                    <select class="form-select" id="paymentOption" aria-label="Choose payment option" name="method">
+                        <option selected disabled>Choose Option</option>
+                        <option value="1">QPAY</option>
+                        <option value="2">Bkash</option>
+                        <option value="3">Credit Card</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="transactionId" class="form-label">Transaction ID</label>
+                    <input type="text" class="form-control" id="transactionId" placeholder="Enter Transaction ID" name="tid">
+                </div>
+
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Enter Amount" name="amount">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Donate Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

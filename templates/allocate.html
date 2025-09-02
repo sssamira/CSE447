@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% block title %}Allocate Donation{%endblock%}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="text-center mb-4">Allocate</h4>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
+                        {{ messages[0][1] }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <form action="/allocatedonation" method="POST">
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="3" placeholder="Enter Description" name="description"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Enter Amount" name="amount">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Donate Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%block title%}Missing Persons{%endblock%}
+{%block content%}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h4 class="text-center mb-4">List of Missing Persons</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Last Seen</th>
+                            <th>Contact No.</th>
+                            <th>Photo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in missingpersons %}
+                        <tr>
+                            <td>{{person.missingid}}</td>
+                            <td>{{person.name}}</td>
+                            <td>{{person.last_location}}</td>
+                            <td>{{person.contactid}}</td>
+                            <td><img src="{{ url_for('serve_photo', person_id=person.missingid) }}" alt="Photo" class="img-thumbnail" style="width: 100px;"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

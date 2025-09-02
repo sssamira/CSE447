@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+        {%block title%} Volunteer Dashboard {%endblock%}
+        {% block head %}
+        <style>
+            body {
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                color: #fff;
+            }
+            .box {
+                border: 2px solid #fff;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .container-custom {
+                max-width: 900px;
+            }
+            h1 {
+                font-weight: bold;
+            }
+        </style>
+         {% endblock %}
+{% block content %}
+        <div class="container container-custom my-5">
+            <h1 class="mb-4">Welcome, {{ decrypt_field(user.name) }}</h1>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>You are currently assigned as:</p>
+                        <h3>{{ voln.role }}</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>View/Update Emergency Directory?</p>
+                        <a href="{{ url_for('emergency_directory') }}" class="btn btn-secondary">
+                        Manage
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>Manage your assigned Relief Camp</p>
+                        <a href="{{ url_for('r_camp_info') }}" class="btn btn-secondary">
+                        View/Update Relief Camp
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>Any disaster ongoing?</p>
+                        <a href="{{ url_for('update_disaster', volunteer_id=voln.volunteerid) }}" class="btn btn-secondary">
+                        Add a disaster
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>Manage Resources</p>
+                        <a href="{{ url_for('resources_dashboard') }}" class="btn btn-secondary">
+                        Manage
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>Check Volunteer Applications?</p>
+                        <a href="/add_volunteer" class="btn btn-secondary">
+                        Manage
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 pt-4">
+                <div class="col-md-4">
+                    <div class="box">
+                        <p>Assign Volunteer to Relief Camp</p>
+                        <a href="/updatevolunteer" class="btn btn-secondary">
+                        Manage
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{%endblock%}

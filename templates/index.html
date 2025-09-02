@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disaster Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  </head>
+  <body>
+    
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark py-3"> 
+      <div class="container"> 
+        <a href="/" class="navbar-brand"> DMS </a>
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navmenu"> 
+        <span class="navbar-toggler-icon"></span> 
+        </button> 
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href = "/viewmissing" class="nav-link">Missing Person Directory</a>
+            </li>
+            <li class="nav-item">
+              <a href = "/bloodavailability" class="nav-link">Blood Bank</a>
+            </li>
+            <li class="nav-item">
+              <a href = "/login" class="nav-link">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="bg-dark text-light p-5 text-center text-sm-start">
+      <div class="container">
+        <div class="d-sm-flex justify-content-between align-items-center">
+          <div>
+            <h1> Welcome to this<span class="text-warning"> Disaster Management System </span></h1>
+            <p class="lead my-4">our system is designed to simplify recovery efforts and ensure help reaches those who need it most<br> 
+              and to manage communities during times of crisis. Together, we build resilience and restore <br>
+              hope in the face of disaster.</p>
+            <a href="/signup" class="btn btn-primary btn-lg"> Get Started </a>
+          </div>
+          <img class="img-fluid w-25 ms-auto d-none d-sm-block" src="Images/lemmling_Cartoon_ghost.svg" alt="">
+        </div>
+      </div>
+    </section>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <section class="bg-{{catrgory}} text-light p-4">
+          <div class="container">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endwith %}
+   
+    <section class="bg-primary text-light p-4">
+      <div class="container">
+        <div class="d-md-flex justify-content-between align-items-center">
+          <h3 class="mb-3 mt-3 md-mb-0 md-mt-0 text-center text-sm-start"> 
+            Sign up for Volunteer!<br> <small>Make sure you have an account in this system before you apply!</small>
+          </h3>
+          <form action="/apply_volunteer" method="POST">
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Enter Email" aria-label="Enter Email" name = "email">
+              <button class="btn btn-dark" type="submit">Submit</button>
+            </div>
+          </form>        
+        </div> 
+      </div>
+    </section>
+    
+    
+    <section class="p-5" id="features">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col d-flex">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <h3 class="mb-3"> <i class="bi-person"></i></h3>
+                <div class="card-title">
+                  Missing Person Directory
+                </div>
+                <div class="card-text"> <p> You can now add missing persons to the directory and keep track of their whereabouts.</p> </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <h3 class="mb-3"><i class="bi-gear"></i></h3>
+                <div class="card-title">
+                  Blood Bank
+                </div>
+                <div class="card-text"><p> You can donate blood and check available person to donate blood. from our bloodbank.
+                  With just one click.</p></div> 
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <h3 class="mb-3"><i class="bi-person-arms-up"></i></h3>
+                <div class="card-title">
+                  Relief Camp Management
+                </div>
+                <div class="card-text"><p> Yes, you can apply for Volunteer and help us manage the Relief camps!</p></div> 
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+        <p class="lead">Copyright &copy; Fluidpotata & Team</p>
+        <a href="#" class="position-absolute bottom-0 end-0 p-5">
+          <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+      </div>
+    </footer>
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+  </script>
+  <style>
+    @media (min-width:768px) {
+      .email-input{
+        width:45%;
+      }
+    }
+
+  </style>
+  </body>
+</html>

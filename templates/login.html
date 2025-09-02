@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Login{%endblock%}
+{% block content %}
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="card p-5">
+            <form action="/login" method="POST">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="mb-3">
+                    {% for category, message in messages %}
+                    <p class="alert alert-{{category}}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                <div class="mb-3">
+                    <input type="username" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Log In</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
